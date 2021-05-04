@@ -15,5 +15,10 @@ function startVideo() {
 }
 
 video.addEventListener("play", () => {
-  console.log("Wewe");
+  setInterval(async () => {
+    const detection = await faceapi
+      .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+      .withFaceLandmarks()
+      .withFaceExpressions();
+  }, 100);
 });
